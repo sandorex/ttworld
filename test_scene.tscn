@@ -16,26 +16,25 @@ extents = Vector2( 100, 50 )
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 2 )
 
-[node name="Card" parent="." instance=ExtResource( 1 )]
-position = Vector2( 656, 173 )
+[node name="WorldCards" type="Node2D" parent="."]
 
-[node name="Card2" parent="." instance=ExtResource( 1 )]
-position = Vector2( 656, 173 )
+[node name="Card" parent="WorldCards" instance=ExtResource( 1 )]
+position = Vector2( 920, 125 )
 
-[node name="Card3" parent="." instance=ExtResource( 1 )]
-position = Vector2( 656, 173 )
+[node name="Card2" parent="WorldCards" instance=ExtResource( 1 )]
+position = Vector2( 920, 125 )
 
-[node name="Card4" parent="." instance=ExtResource( 1 )]
-position = Vector2( 656, 173 )
+[node name="Card3" parent="WorldCards" instance=ExtResource( 1 )]
+position = Vector2( 920, 125 )
 
-[node name="Card5" parent="." instance=ExtResource( 1 )]
-position = Vector2( 656, 173 )
+[node name="Card4" parent="WorldCards" instance=ExtResource( 1 )]
+position = Vector2( 920, 125 )
 
-[node name="Card6" parent="." instance=ExtResource( 1 )]
-position = Vector2( 656, 173 )
+[node name="Card5" parent="WorldCards" instance=ExtResource( 1 )]
+position = Vector2( 920, 125 )
 
 [node name="Hand" type="Node2D" parent="." groups=["cardslot"]]
-position = Vector2( 99.272, 550 )
+position = Vector2( 459.272, 382 )
 script = ExtResource( 2 )
 
 [node name="Area2D" type="Area2D" parent="Hand"]

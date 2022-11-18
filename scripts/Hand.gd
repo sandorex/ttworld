@@ -1,35 +1,40 @@
-extends CardSlot
+extends Node2D
 
 export var card_limit := 16
 export(Array, String) var card_decks
 
 var mouse_inside = false
 var cards = []
-var positions = []
 
 func slot_selected(_card: Card):
 	return self.mouse_inside
 
 func slot_test(_card: Card):
 	# for now accept any kind of card
-	return len(cards) <= self.card_limit
+	return len(cards) < self.card_limit
 
 func slot_card(card: Card):
-	var pos = self.create_position()
-	card.slot_position = pos
-	self.cards.append(card)
-	self.positions.append(pos)
-	self.add_child(pos)
+	cards.append(card)
+	reshuffle()
 
 func unslot_card(card: Card):
-	var index = self.cards.find(card)
-	self.cards.remove(index)
-	self.positions.remove(index)
+	cards.erase(card)
+	reshuffle()
 
-func create_position():
-	var pos = Position2D.new()
-	pos.position = Vector2(100 + randi() % 300, -300)
-	return pos
+func reshuffle():
+	var count := len(cards)
+	var margin := 150 # TODO
+	
+	var pos = - margin * (count/2)
+	
+	# if it's odd number of children center one
+	if count % 2 == 1:
+		print("it's odd!!!")
+		return
+	
+	for node in cards:
+		node.card_slot_offset.x = pos
+		pos += margin
 
 # shouldnt there be a better way?
 func _on_Area2D_mouse_entered():
