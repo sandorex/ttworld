@@ -1,0 +1,52 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Card.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scripts/Hand.gd" type="Script" id=2]
+[ext_resource path="res://icon.png" type="Texture" id=3]
+
+[sub_resource type="Environment" id=2]
+background_mode = 4
+glow_enabled = true
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 100, 50 )
+
+[node name="Root" type="Node2D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 2 )
+
+[node name="Card" parent="." instance=ExtResource( 1 )]
+position = Vector2( 656, 173 )
+
+[node name="Card2" parent="." instance=ExtResource( 1 )]
+position = Vector2( 656, 173 )
+
+[node name="Card3" parent="." instance=ExtResource( 1 )]
+position = Vector2( 656, 173 )
+
+[node name="Card4" parent="." instance=ExtResource( 1 )]
+position = Vector2( 656, 173 )
+
+[node name="Card5" parent="." instance=ExtResource( 1 )]
+position = Vector2( 656, 173 )
+
+[node name="Card6" parent="." instance=ExtResource( 1 )]
+position = Vector2( 656, 173 )
+
+[node name="Hand" type="Node2D" parent="." groups=["cardslot"]]
+position = Vector2( 99.272, 550 )
+script = ExtResource( 2 )
+
+[node name="Area2D" type="Area2D" parent="Hand"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hand/Area2D"]
+shape = SubResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="Hand"]
+position = Vector2( 0.796005, -2.5 )
+scale = Vector2( 3.12288, 1.67187 )
+texture = ExtResource( 3 )
+
+[connection signal="mouse_entered" from="Hand/Area2D" to="Hand" method="_on_Area2D_mouse_entered"]
+[connection signal="mouse_exited" from="Hand/Area2D" to="Hand" method="_on_Area2D_mouse_exited"]
