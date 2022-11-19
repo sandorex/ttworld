@@ -36,6 +36,7 @@ position = Vector2( 920, 125 )
 [node name="Hand" type="Node2D" parent="." groups=["cardslot"]]
 position = Vector2( 459.272, 382 )
 script = ExtResource( 2 )
+card_margin = 70
 
 [node name="Area2D" type="Area2D" parent="Hand"]
 
@@ -45,6 +46,7 @@ shape = SubResource( 3 )
 [node name="Sprite" type="Sprite" parent="Hand"]
 position = Vector2( 0.796005, -2.5 )
 scale = Vector2( 3.12288, 1.67187 )
+z_index = 10
 texture = ExtResource( 3 )
 
 [connection signal="mouse_entered" from="Hand/Area2D" to="Hand" method="_on_Area2D_mouse_entered"]

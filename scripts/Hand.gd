@@ -2,6 +2,7 @@ extends Node2D
 
 export var card_limit := 16
 export(Array, String) var card_decks
+export var card_margin = 150
 
 var mouse_inside = false
 var cards = []
@@ -23,18 +24,19 @@ func unslot_card(card: Card):
 
 func reshuffle():
 	var count := len(cards)
-	var margin := 150 # TODO
+	var z_index = count
+	var pos = -self.card_margin * (count/2)
 	
-	var pos = - margin * (count/2)
-	
-	# if it's odd number of children center one
-	if count % 2 == 1:
-		print("it's odd!!!")
-		return
+	# TODO: does not seeme exactly centered
+	#if count % 2 == 0:
+	#	pos += self.card_margin
 	
 	for node in cards:
 		node.card_slot_offset.x = pos
-		pos += margin
+		node.z_index = z_index
+		
+		pos += self.card_margin / 2
+		z_index -= 1
 
 # shouldnt there be a better way?
 func _on_Area2D_mouse_entered():
