@@ -25,17 +25,21 @@ func unslot_card(card: Card):
 func reshuffle():
 	var count := len(cards)
 	var z_index = count
-	var pos = -self.card_margin * (count/2)
+	var pos = 0
 	
-	# TODO: does not seeme exactly centered
-	#if count % 2 == 0:
-	#	pos += self.card_margin
+	# offset half the cards to center them
+	if count > 1:
+		pos = -self.card_margin * (count / 2)
+	
+	# if even number of cards then move it offcenter
+	if count % 2 == 0: #and count != 1:
+		pos += self.card_margin / 2
 	
 	for node in cards:
 		node.card_slot_offset.x = pos
 		node.z_index = z_index
 		
-		pos += self.card_margin / 2
+		pos += self.card_margin
 		z_index -= 1
 
 # shouldnt there be a better way?
